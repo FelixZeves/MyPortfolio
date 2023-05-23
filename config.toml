@@ -1,0 +1,63 @@
+# Site settings
+baseURL = "https://example.com"
+languageCode = "en-US"
+title = "Портфолио"
+theme = "Split"
+disableKinds = ["section", "taxonomy", "taxonomyTerm", "RSS", "sitemap"]
+
+# Local preview mode
+relativeURLs = false
+uglyURLs = false
+
+# Copyright
+copyright = "&copy;2023 Феликс Зиновьев"
+
+[params]
+
+  # Metadata for search engines and social sharing
+  author = "Феликс Зиновьев"
+  description = "Портфолио с основной информацией о Феликсе Зиновьеве."
+
+  # Favicon
+  favicon = "portfolio.ico"
+
+  # Section - Visual
+  [params.visual]
+
+    # Image
+    [params.visual.image]
+      enable = true
+      file = "images/Mebg.jpg"
+      position = "center center"
+
+  # Links
+  #
+  # Links List #1
+  [[params.links]]
+    [params.links.list1]
+      heading = "Контактные данные"
+
+      [[params.links.list1.link]]
+        text = "ВКонтакте"
+        url = "https://vk.com/filzeves"
+        new_tab = true # new tab
+
+      [[params.links.list1.link]]
+        text = "Email: karpukov2002@mail.ru"
+        url = ""
+        new_tab = false # Default, open at same tab
+
+  # Links List #2
+  [[params.links]]
+    [params.links.list2]
+      heading = "Сторонние ресурсы"
+
+      [[params.links.list2.link]]
+        text = "GitHub"
+        url = "https://github.com/FelixZeves?tab=repositories"
+        new_tab = true # new tab
+
+  # The original template is released under the Creative Commons Attribution 3.0 License.
+  # Please keep the original attribution link when using for your own project.
+  # If you'd like to use the template without the attribution, you can check out
+  # the license option via the template author's website: https://onepagelove.com/split
