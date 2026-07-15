@@ -16,5 +16,5 @@ export function getSkillLevelName(
 export function getSkillProgress(
     level: SkillLevel
 ): number {
-    return level / 3 * 100
+    return level / 3
 }

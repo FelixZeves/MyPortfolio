@@ -1,0 +1,72 @@
+@layer components {
+
+    .industrial-panel-edges {
+
+        position: relative;
+
+        overflow: hidden;
+
+        background: var(--industrial-navy);
+
+        /*
+         * Верхняя интерфейсная линия
+         */
+
+        &::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 1px;
+
+            background: linear-gradient(
+                to right,
+                transparent 0%,
+                var(--technical-line) 90%,
+                var(--signal-primary) 100%
+            );
+
+            pointer-events: none;
+
+        }
+
+        /*
+         * Правая стыковочная грань
+         */
+
+        &::after {
+
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            right: 0;
+
+            width: 1px;
+            height: 100%;
+
+            background: linear-gradient(
+                to bottom,
+                var(--signal-primary) 0%,
+                var(--technical-line) 5%,
+                var(--technical-line) 45%,
+                var(--signal-primary) 50%,
+                var(--technical-line) 60%,
+                var(--signal-primary) 70%,
+                var(--technical-line) 75%,
+                transparent 100%
+            );
+
+            pointer-events: none;
+
+        }
+
+    }
+
+}

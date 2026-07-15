@@ -1,0 +1,58 @@
+:root {
+
+    /* Paper */
+  
+    --paper: #E8DDC8;
+    --paper-dark: #CDBD9F;
+  
+    
+  
+  
+    /* Industrial */
+  
+    --industrial-black: #111417;
+    --industrial-navy: #0B1A26;
+  
+  
+    /* Signals */
+  
+    --signal-primary: #ce2222;
+    --signal-secondary: #4181b6;
+    --signal-additional: #e0eefa;
+  
+  
+    /* Technical */
+  
+    --technical-grid: #192026;
+    --technical-code: #27333D;
+    --technical-line: #6b6d6e;
+  
+    /* Fonts */
+
+    --font-body:
+        "IBM Plex Sans",
+        sans-serif;
+
+    --font-heading:
+        "Space Grotesk",
+        sans-serif;
+
+    --font-code:
+        "JetBrains Mono",
+        monospace;
+  }
+
+@layer utilities {
+
+  .border-gradient-right {
+      background: linear-gradient(
+          to bottom,
+          theme('colors.signal-primary') 0%,
+          theme('colors.technical-line') 20%,
+          theme('colors.signal-primary') 45%,
+          theme('colors.technical-line') 65%,
+          transparent 100%
+      );
+  }
+
+}

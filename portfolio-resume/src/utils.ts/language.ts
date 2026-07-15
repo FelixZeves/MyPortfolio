@@ -23,5 +23,5 @@ export function getLanguageLevelName(
 export function getLanguageProgress(
     level: LanguageLevel
 ): number {
-    return level / 6 * 100
+    return level / 6
 }
