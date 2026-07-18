@@ -6,6 +6,7 @@ import type { Language } from '@/types/language.ts';
 import IndustrialPanel from '../ui/IndustrialPanel.vue';
 import ProfileInfo from './ProfileInfo.vue';
 import ProfilePhoto from './ProfilePhoto.vue';
+import ProfileAbout from './ProfileAbout.vue';
 
 
 defineProps<{
@@ -22,22 +23,12 @@ defineProps<{
             <div class="profile-layout">
                 <profile-info :profile="profile" :languages="languages"/>
 
-                <profile-photo/>
+                <profile-photo :profile="profile"/>
             </div>
 
         </industrial-panel>
 
-        <div class="about-block">
-            <div class="about-title">
-                ABOUT_PERSON
-            </div>
-
-            <p>
-                Разрабатываю интерфейсы и программные системы,
-                соединяя архитектуру, UX и инженерный подход.
-            </p>
-            <q-btn icon="arrow_left">MORE INFO</q-btn>
-        </div>
+        <profile-about :profile="profile"/>
 
     </section>
 </template>
@@ -45,8 +36,13 @@ defineProps<{
 <style scoped>
 
 .profile-section{
-    display: flex;
-    flex-direction: row;
+    display: grid;
+
+
+
+    grid-template-columns:
+        2fr
+        1fr;
 }
 
 .profile-layout {
@@ -54,10 +50,8 @@ defineProps<{
     display: grid;
 
     grid-template-columns:
-        2fr
+        1fr
         1fr;
-
-    gap: 1rem;
 
     align-items: center;
     height: 100%;
@@ -69,34 +63,6 @@ defineProps<{
 .profile-layout{
     grid-template-columns: 1fr;
 }
-
-}
-
-.about-block {
-
-    position:relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: start;
-
-    padding-top:20px;
-
-}
-
-.q-btn {
-
-    background:
-    transparent;
-
-    border:
-    1px solid var(--signal-primary);
-
-    color:
-    var(--signal-primary);
-
-    padding:
-    8px 16px;
 
 }
 

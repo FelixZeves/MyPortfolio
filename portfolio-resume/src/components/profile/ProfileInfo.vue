@@ -3,7 +3,7 @@
 import type { Profile } from '@/types/profile.ts';
 import type { Language } from '@/types/language.ts';
 import { computed } from 'vue';
-import { getLanguageLevelName, getLanguageProgress } from '@/utils.ts/language';
+import { getLanguageLevelName, getLanguageProgress } from '@/utils/language.ts';
 
 import HexRating from '../ui/HexRating.vue';
 
@@ -37,25 +37,26 @@ const specialization = computed(() =>
 
     <div
         class="
-            industrial-panel-edges
+            industrial-data-panel
             h-full
             flex
             flex-col
             gap-4
-            pt-5
+            pt-3
+            px-1
             font-code
         "
     >
 
         <header>
 
-            <span class="text-signal-primary">
-                PR0F1LE_DATA
+            <span class="text-signal-primary z-10">
+                01_PR0F1LE_DATA
             </span>
 
         </header>
 
-        <div class="flex flex-col gap-2 pe-1">
+        <div class="flex flex-col gap-2 pe-1 z-10">
             <span class="text-signal-additional">
                 {
             </span>
@@ -138,7 +139,7 @@ const specialization = computed(() =>
                         </span>
 
                         <span class="code-value">
-                            {{ getLanguageLevelName(language.level) }}
+                            "{{ getLanguageLevelName(language.level) }}"
                         </span>
                     </div>
 
@@ -185,17 +186,7 @@ const specialization = computed(() =>
 
 header {
 
-    display:flex;
-
-    align-items:center;
-
-    gap:1rem;
-
-
-    font-size:.8rem;
-
-    letter-spacing:.25em;
-
+    @apply flex flex-row items-center text-[.8rem] tracking-[.25rem]
 
 }
 

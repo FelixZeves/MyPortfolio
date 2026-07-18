@@ -2,6 +2,7 @@
 
 import { resume } from '@/data/resume'
 import ProfileSection from '@/components/profile/ProfileSection.vue'
+import ProjectsSection from '@/components/projects/ProjectsSection.vue';
 
 </script>
 
@@ -11,11 +12,11 @@ import ProfileSection from '@/components/profile/ProfileSection.vue'
   <main
     class="
       min-h-screen
-      bg-industrial-black
       flex
       justify-center
       items-start
       py-10
+      cutting-mat
     "
   >
 
@@ -25,14 +26,16 @@ import ProfileSection from '@/components/profile/ProfileSection.vue'
         aspect-[210/297]
         resume-sheet
         shadow-2xl
-        overflow-hidden
+        overflow-auto
       "
     >
     
     <profile-section
     :profile="resume.profile"
     :languages="resume.languages"
-    ></profile-section>
+    />
+
+    <projects-section :projects="resume.projects"/>
 
     </section>
 

@@ -6,7 +6,9 @@ export interface Profile {
     photo?: string
 
     title: string
+    knowledges: string[]
     specialization: string[]
 
     about: string
+    summary: string
 }

@@ -16,16 +16,31 @@
   
     /* Signals */
   
+    --signal-primary-soft: #8f1b1b;
     --signal-primary: #ce2222;
+    --signal-primary-glow: #ff3b3b;
+
     --signal-secondary: #4181b6;
+    
     --signal-additional: #e0eefa;
   
   
     /* Technical */
   
+    --technical-grid-soft: #26333A;
     --technical-grid: #192026;
+    --technical-grid-major: #35444B;
+
     --technical-code: #27333D;
     --technical-line: #6b6d6e;
+
+    /* Cutting mat */
+    --cutting-mat-base: #08120E;
+    --cutting-mat-surface: #13251D;
+    --cutting-mat-shadow: #050907;
+
+    --cutting-mat-grid: rgba(86, 106, 88, .12);
+    --cutting-mat-grid-major: rgba(115, 133, 111, .18);
   
     /* Fonts */
 
@@ -40,6 +55,14 @@
     --font-code:
         "JetBrains Mono",
         monospace;
+
+    --font-poster:
+        "Manrope",
+        sans-serif;
+
+    --font-paper:
+        "Golos Text",
+        sans-serif;
   }
 
 @layer utilities {

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import SignalOverlay from './SignalOverlay.vue';
 
 </script>
 
@@ -12,6 +13,59 @@
         preserveAspectRatio="none"
         aria-hidden="true"
     >
+
+        <defs>
+
+            <!-- Сетка -->
+
+            <pattern
+                id="matrix-grid"
+                width="80"
+                height="80"
+                patternUnits="userSpaceOnUse"
+            >
+
+                <line
+                    x1="80"
+                    y1="0"
+                    x2="80"
+                    y2="80"
+                    class="grid-major"
+                />
+
+                <line
+                    x1="0"
+                    y1="80"
+                    x2="80"
+                    y2="80"
+                    class="grid-major"
+                />
+
+            </pattern>
+
+            <clipPath id="panel-clip">
+
+                <path
+                    d="
+                        M0,0
+                        L840,0
+                        L920,300
+                        L840,370
+                        L960,600
+                        L910,650
+                        L960,920
+                        L940,960
+                        L820,920
+                        L720,960
+                        L750,1000
+                        L0,1000
+                        Z
+                    "
+                />
+
+            </clipPath>
+
+        </defs>
 
         <!-- Основная форма -->
 
@@ -34,6 +88,18 @@
             "
         />
 
+        <!-- Сетка -->
+
+        <g class="matrix-layer" clip-path="url(#panel-clip)">
+
+            <rect
+                width="1000"
+                height="1000"
+                fill="url(#matrix-grid)"
+            />
+
+        </g>
+
         <!-- Контур -->
 
         <path
@@ -53,11 +119,18 @@
             "
         />
 
-        <g class="panel-decoration"/>
-
     </svg>
 
-    <div class="panel-content">
+    <SignalOverlay
+        :width="'85%'"
+        :lines="10"
+        :points="8"
+        :crosses="6"
+    />
+
+    <div
+        class="panel-content"
+    >
         <slot/>
     </div>
 
@@ -119,7 +192,20 @@
 
     z-index: 1;
 
-    padding-right: 2.5rem;
+    width:100%;
+    height:100%;
+
+}
+
+.grid-major {
+
+    fill: cover;
+
+    stroke: var(--technical-grid);
+
+    stroke-width: 3;
+
+    opacity: .8;
 
 }
 

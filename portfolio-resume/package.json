@@ -11,8 +11,10 @@
     "type-check": "vue-tsc --build"
   },
   "dependencies": {
+    "@fontsource/golos-text": "^5.2.8",
     "@fontsource/ibm-plex-sans": "^5.2.8",
     "@fontsource/jetbrains-mono": "^5.2.8",
+    "@fontsource/manrope": "^5.2.8",
     "@fontsource/space-grotesk": "^5.2.10",
     "@iconify/vue": "^5.0.1",
     "@quasar/extras": "^2.0.2",
