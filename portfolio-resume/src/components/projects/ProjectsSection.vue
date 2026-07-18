@@ -1,9 +1,13 @@
 <script setup lang="ts">
-import type { Project } from '@/types/project.ts';
-import SignalOverlay from '../ui/SignalOverlay.vue';
 import { computed, ref } from 'vue';
 import { useQuasar } from 'quasar';
 import { Icon } from '@iconify/vue';
+
+import type { Project } from '@/types/project.ts';
+
+import SignalOverlay from '../ui/SignalOverlay.vue';
+import ProjectCard from './ProjectCard.vue';
+
 
 const props = defineProps<{
     projects: Project[]
@@ -16,9 +20,7 @@ const projectsPerSlide = computed(() => {
 
     if ($q.screen.xs) return 1;
 
-    if ($q.screen.sm) return 2;
-
-    return 3;
+    return 2;
 
 });
 
@@ -66,18 +68,14 @@ const hasNavigation = computed(() =>
             :crosses="2"
         />
 
-        <header class="projects-header">
-
-            <span class="projects-index">
-                02_PROJECTS
-            </span>
-
+        <header class="projects-header section-title">
+                02_PR0JECTS
         </header>
 
         <q-carousel
             v-model="slide"
-            transition-prev="scale"
-            transition-next="scale"
+            transition-prev="slide-right"
+            transition-next="slide-left"
             animated
             swipeable
             infinite
@@ -92,18 +90,17 @@ const hasNavigation = computed(() =>
                 class="projects-slide"
             >
 
-                <!-- <ProjectCard
+                <ProjectCard
                     v-for="project in group"
                     :key="project.name"
                     :project="project"
-                /> -->
-                {{ group }}
+                />
 
             </q-carousel-slide>
 
         </q-carousel>
 
-        <div class="w-full content-center flex justify-between px-8">
+        <div class="projects-navigator px-8">
 
             <button
                 v-if="hasNavigation"
@@ -148,28 +145,23 @@ const hasNavigation = computed(() =>
 <style scoped>
 
 .projects-section{
-    @apply w-full h-full bg-industrial-navy px-1 pt-2;
+    @apply
+        w-full
+        h-full
+        bg-industrial-navy
+        pe-1
+        ps-2
+        pt-2
+        font-code;
 
     display: grid;
 
     grid-template-rows:
-        auto     /* Header */
-        1fr      /* Carousel */
-        auto;    /* Navigation */
+        auto
+        1fr
+        auto;
 
     gap: .5rem;
-}
-
-.projects-header{
-
-    @apply
-
-        flex
-        flex-row
-        items-center
-        text-[.8rem]
-        tracking-[.25rem]
-        gap-[12px];
 
 }
 
@@ -192,14 +184,29 @@ const hasNavigation = computed(() =>
 
 }
 
-.projects-index{
+.projects-carousel {
+    @apply bg-transparent h-full;
+    
 
-    @apply text-signal-primary font-code;
+    min-height: 0;
+}
+
+.projects-slide{
+    @apply flex flex-row gap-x-8 justify-center h-full;
 
 }
 
-.projects-carousel {
-    @apply bg-transparent h-full;
+.projects-slide > * {
+
+    height:100%;
+    flex:0 1 60%;
+
+}
+
+.projects-navigator{
+
+    @apply flex items-center justify-center pb-2 gap-3;
+
 }
 
 .nav-page{
@@ -212,11 +219,15 @@ const hasNavigation = computed(() =>
 
     letter-spacing:.2em;
 
+    z-index: 1;
+
 }
 
 .nav-page.active{
 
     color:var(--signal-primary);
+
+    z-index: 1;
 
 }
 
@@ -231,6 +242,8 @@ const hasNavigation = computed(() =>
     height:1px;
 
     background:var(--signal-primary);
+
+    z-index: 1;
 
 }
 

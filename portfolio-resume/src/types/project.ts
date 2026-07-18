@@ -6,7 +6,7 @@ export interface ProjectLink {
 export interface Project {
     name: string
     description: string
-    image?: string
+    icon?: string
     technologies: string[]
     responsibilities: string[]
     links?: ProjectLink

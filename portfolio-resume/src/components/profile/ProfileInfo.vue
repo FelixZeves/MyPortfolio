@@ -43,17 +43,14 @@ const specialization = computed(() =>
             flex-col
             gap-4
             pt-3
-            px-1
+            pe-1
+            ps-2
             font-code
         "
     >
 
-        <header>
-
-            <span class="text-signal-primary z-10">
+        <header class="section-title z-10">
                 01_PR0F1LE_DATA
-            </span>
-
         </header>
 
         <div class="flex flex-col gap-2 pe-1 z-10">
@@ -182,12 +179,6 @@ const specialization = computed(() =>
 
 .code-key{
     @apply text-signal-primary
-}
-
-header {
-
-    @apply flex flex-row items-center text-[.8rem] tracking-[.25rem]
-
 }
 
 </style>

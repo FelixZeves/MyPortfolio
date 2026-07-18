@@ -187,4 +187,18 @@
     
     }
 
+    .section-title{
+
+      @apply
+          flex
+          items-center
+          text-[.8rem]
+          tracking-[.25rem]
+          font-code
+          text-signal-primary;
+  
+      line-height:1;
+  
+  }
+
 }

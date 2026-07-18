@@ -4,9 +4,7 @@
   
     --paper: #E8DDC8;
     --paper-dark: #CDBD9F;
-  
-    
-  
+
   
     /* Industrial */
   
@@ -39,6 +37,49 @@
     --cutting-mat-surface: #13251D;
     --cutting-mat-shadow: #050907;
 
+
+
+    /* RGB type */
+    /* Paper */
+
+    --paper-rgb: 232, 221, 200;
+    --paper-dark-rgb: 205, 189, 159;
+    --paper-highlight-rgb: 255, 249, 235;
+    --paper-shadow-rgb: var(--paper-dark-rgb);
+
+
+    /* Industrial */
+
+    --industrial-black-rgb: 17, 20, 23;
+    --industrial-navy-rgb: 11, 26, 38;
+
+
+    /* Signals */
+
+    --signal-primary-soft-rgb: 143, 27, 27;
+    --signal-primary-rgb: 206, 34, 34;
+    --signal-primary-glow-rgb: 255, 59, 59;
+
+    --signal-secondary-rgb: 65, 129, 182;
+
+    --signal-additional-rgb: 224, 238, 234;
+
+
+    /* Technical */
+
+    --technical-grid-soft-rgb: 38, 51, 58;
+    --technical-grid-rgb: 25, 32, 38;
+    --technical-grid-major-rgb: 53, 68, 75;
+
+    --technical-code-rgb: 39, 51, 61;
+    --technical-line-rgb: 107, 109, 110;
+
+
+    /* Cutting mat */
+
+    --cutting-mat-base-rgb: 8, 18, 14;
+    --cutting-mat-surface-rgb: 19, 37, 29;
+    --cutting-mat-shadow-rgb: 5, 9, 7;
     --cutting-mat-grid: rgba(86, 106, 88, .12);
     --cutting-mat-grid-major: rgba(115, 133, 111, .18);
   

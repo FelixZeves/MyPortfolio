@@ -19,41 +19,95 @@ import ProjectsSection from '@/components/projects/ProjectsSection.vue';
       cutting-mat
     "
   >
+    <div class="resume-frame">
 
-    <section
-      class="
-        w-[min(90vw,794px)]
-        aspect-[210/297]
-        resume-sheet
-        shadow-2xl
-        overflow-auto
-      "
-    >
-    
-    <profile-section
-    :profile="resume.profile"
-    :languages="resume.languages"
-    />
-
-    <projects-section :projects="resume.projects"/>
-
-    </section>
+      <section
+        class="
+          resume-sheet
+          shadow-2xl
+        "
+      >
+      
+        <profile-section
+        :profile="resume.profile"
+        :languages="resume.languages"
+        />
+  
+        <projects-section :projects="resume.projects"/>
+  
+      </section>
+    </div>
 
   </main>
 </template>
 
 <style scoped>
 
+.resume-frame {
+
+  position: relative;
+
+  padding: 12px;
+
+  background: var(--paper);
+
+  border: 1px solid var(--industrial-black);
+
+}
+
+
+.resume-frame::before {
+
+  content:"";
+
+  position:absolute;
+
+  inset: 11px;
+
+  border:2px solid rgba(var(--industrial-black-rgb), .3);
+
+  transform:
+      translate(0px, 0px);
+
+}
+
+
+.resume-frame::after {
+
+  content:"DOC // 07";
+
+  position:absolute;
+
+  right:-2px;
+  top:10px;
+
+  padding:4px 8px;
+
+  background:var(--signal-primary);
+
+  color:var(--paper);
+
+  font-family:var(--font-paper);
+  font-size:10px;
+
+  letter-spacing:.15em;
+
+}
+
 @media(max-width:640px){
 
-.resume-sheet{
-  width:100%;
-  aspect-ratio:auto;
-}
+  .resume-sheet{
+    width:100%;
+    min-height: auto;
+  }
 
 }
 
 .resume-sheet {
+
+  width: min(90vw, 794px);
+
+  min-height: 1123px; /* настоящий A4 при 96dpi */
 
   background:
     linear-gradient(
@@ -75,13 +129,7 @@ import ProjectsSection from '@/components/projects/ProjectsSection.vue';
     isolation: isolate;
 
     display: grid;
-
-    grid-template-rows: 
-    3fr
-    2fr
-    3fr
-    2fr
-    1fr;
+    gap: 0rem;
 
 }
 
@@ -119,11 +167,32 @@ import ProjectsSection from '@/components/projects/ProjectsSection.vue';
 
 }
 
+.resume-sheet::after {
+
+  content:"";
+
+  position:absolute;
+
+  inset: 10px;
+
+  border:1px solid rgba(var(--signal-secondary-rgb), .35);
+
+  clip-path: polygon(
+      0 0,
+      100% 0,
+      100% 92%,
+      98% 94%,
+      98% 100%,
+      0 100%
+  );
+
+}
+
 .resume-sheet > * {
 
-position: relative;
+  position: relative;
 
-z-index: 1;
+  z-index: 1;
 
 }
 
