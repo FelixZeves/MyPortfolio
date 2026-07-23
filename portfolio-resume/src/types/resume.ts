@@ -7,8 +7,8 @@ import type {
 } from './contact'
 
 import type {
-    Experience
-} from './experience'
+    ProfessionalExperience
+} from './professionalExperience'
 
 import type {
     Project
@@ -35,7 +35,7 @@ export interface Resume{
 
     contacts: Contact[]
 
-    experience: Experience[]
+    experience: ProfessionalExperience[]
 
     projects: Project[]
 

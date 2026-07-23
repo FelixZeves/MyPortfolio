@@ -7,5 +7,5 @@ export interface Education {
     startYear: number
     endYear:number
 
-    achievements?: string
+    achievements?: string[]
 }

@@ -19,9 +19,3 @@ export function getLanguageLevelName(
     }
     return levels[level]
 }
-
-export function getLanguageProgress(
-    level: LanguageLevel
-): number {
-    return level / 6
-}

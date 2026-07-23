@@ -14,4 +14,6 @@ export interface Skill {
     category: SkillCategory
 
     level: SkillLevel
+
+    icon?: string
 }

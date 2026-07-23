@@ -104,7 +104,6 @@ const hasNavigation = computed(() =>
 
             <button
                 v-if="hasNavigation"
-                class="nav-arrow"
                 @click="prevSlide"
             >
                 <Icon 
@@ -126,7 +125,6 @@ const hasNavigation = computed(() =>
 
             <button
                 v-if="hasNavigation"
-                class="nav-arrow"
                 @click="nextSlide"
             >
                 <Icon 
@@ -218,6 +216,8 @@ const hasNavigation = computed(() =>
     transition:.25s;
 
     letter-spacing:.2em;
+
+    color:var(--signal-secondary);
 
     z-index: 1;
 

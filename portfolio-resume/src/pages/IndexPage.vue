@@ -1,8 +1,14 @@
 <script setup lang="ts">
 
-import { resume } from '@/data/resume'
-import ProfileSection from '@/components/profile/ProfileSection.vue'
+import { resume } from '@/data/resume';
+
+import ProfileSection from '@/components/profile/ProfileSection.vue';
+
 import ProjectsSection from '@/components/projects/ProjectsSection.vue';
+
+import ExperienceSection from '@/components/experience/ExperienceSection.vue';
+
+import SkillsSection from '@/components/skills/SkillsSection.vue';
 
 </script>
 
@@ -34,6 +40,10 @@ import ProjectsSection from '@/components/projects/ProjectsSection.vue';
         />
   
         <projects-section :projects="resume.projects"/>
+
+        <experience-section :education="resume.education" :workExperience="resume.experience"/>
+
+        <skills-section :skills="resume.skills" :softSkills="resume.softSkills"/>
   
       </section>
     </div>
@@ -64,10 +74,7 @@ import ProjectsSection from '@/components/projects/ProjectsSection.vue';
 
   inset: 11px;
 
-  border:2px solid rgba(var(--industrial-black-rgb), .3);
-
-  transform:
-      translate(0px, 0px);
+  border:2px solid rgba(var(--industrial-black-rgb), .4);
 
 }
 
@@ -125,7 +132,6 @@ import ProjectsSection from '@/components/projects/ProjectsSection.vue';
     var(--paper);
 
     position: relative;
-    overflow: hidden;
     isolation: isolate;
 
     display: grid;
@@ -173,17 +179,17 @@ import ProjectsSection from '@/components/projects/ProjectsSection.vue';
 
   position:absolute;
 
-  inset: 10px;
+  inset: 8px;
 
-  border:1px solid rgba(var(--signal-secondary-rgb), .35);
+  border:1px solid rgba(var(--signal-secondary-rgb), .25);
 
   clip-path: polygon(
       0 0,
       100% 0,
-      100% 92%,
+      100% 65%,
       98% 94%,
-      98% 100%,
-      0 100%
+      98% 98%,
+      0 95%
   );
 
 }

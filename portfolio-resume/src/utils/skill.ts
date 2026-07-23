@@ -12,9 +12,3 @@ export function getSkillLevelName(
 
     return levels[level]
 }
-
-export function getSkillProgress(
-    level: SkillLevel
-): number {
-    return level / 3
-}

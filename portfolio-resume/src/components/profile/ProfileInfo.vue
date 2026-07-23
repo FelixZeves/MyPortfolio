@@ -3,7 +3,7 @@
 import type { Profile } from '@/types/profile.ts';
 import type { Language } from '@/types/language.ts';
 import { computed } from 'vue';
-import { getLanguageLevelName, getLanguageProgress } from '@/utils/language.ts';
+import { getLanguageLevelName } from '@/utils/language.ts';
 
 import HexRating from '../ui/HexRating.vue';
 

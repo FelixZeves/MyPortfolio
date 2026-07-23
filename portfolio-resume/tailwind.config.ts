@@ -32,6 +32,8 @@ const config: Config = {
         body: ['"IBM Plex Sans"', 'sans-serif'],
         heading: ['"Space Grotesk"', 'sans-serif'],
         code: ['"JetBrains Mono"', 'monospace'],
+        poster: ['"Manrope"', 'sans-serif'],
+        paper: ['"Golos Text"', 'sans-serif']
       },
     },
   },
