@@ -10,6 +10,8 @@ import ExperienceSection from '@/components/experience/ExperienceSection.vue';
 
 import SkillsSection from '@/components/skills/SkillsSection.vue';
 
+import FooterSection from '@/components/FooterSection.vue';
+
 </script>
 
 
@@ -25,7 +27,10 @@ import SkillsSection from '@/components/skills/SkillsSection.vue';
       cutting-mat
     "
   >
+
+
     <div class="resume-frame">
+
 
       <section
         class="
@@ -34,6 +39,7 @@ import SkillsSection from '@/components/skills/SkillsSection.vue';
         "
       >
       
+
         <profile-section
         :profile="resume.profile"
         :languages="resume.languages"
@@ -44,8 +50,13 @@ import SkillsSection from '@/components/skills/SkillsSection.vue';
         <experience-section :education="resume.education" :workExperience="resume.experience"/>
 
         <skills-section :skills="resume.skills" :softSkills="resume.softSkills"/>
+
+        <footer-section :contacts="resume.contacts"/>
   
+
       </section>
+
+
     </div>
 
   </main>

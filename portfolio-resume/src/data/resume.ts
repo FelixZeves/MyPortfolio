@@ -25,30 +25,35 @@ Framework, а также на проектировании высоконагр�
     contacts: [
         {
             type: 'location',
-            value: "г. Челябинск"
+            value: "г. Челябинск",
+            icon: 'mdi:location'
         },
 
         {
             type: 'email',
             value: 'karpukov2002@mail.ru',
+            icon: 'mdi:email'
         },
-
+    
         {
             type: 'phone',
-            value: '+7 (929) 236-90-53'
+            value: '+7 (929) 236-90-53',
+            icon: 'mdi:phone'
         },
-
+    
         {
             type: 'telegram',
             value: '@FilZeves',
-            url: 'https://t.me/FilZeves'
+            url: 'https://t.me/FilZeves',
+            icon: 'mdi:telegram'
         },
-
+    
         {
             type: 'github',
             value: 'FelixZeves',
-            url: 'https://github.com/FelixZeves'
-        },
+            url: 'https://github.com/FelixZeves',
+            icon: 'mdi:github'
+        }
     ],
 
     experience: [

@@ -196,7 +196,6 @@ async function onProfileChange(
     overflow:hidden;
 
     color: var(--signal-primary);
-        
 
 }
 

@@ -9,4 +9,5 @@ export interface Contact {
     type: ContactType
     value: string
     url?: string
+    icon?: string
 }

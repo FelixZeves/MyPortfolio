@@ -2,6 +2,8 @@
 
 import type { Profile } from '@/types/profile.ts';
 
+import Logo from '../ui/Logo.vue';
+
 
 const props = defineProps<{
     profile: Profile
@@ -16,6 +18,16 @@ const previewText = props.profile.about.slice(0, 180)
 <template>
 
 <div class="about-block">
+
+    <!-- Штамп-логотип -->
+    <div class="sheet-mark">
+
+        <Logo
+            class="sheet-logo"
+            color="var(--signal-secondary)"
+        />
+
+    </div>
 
 
     <!-- Главный лозунг -->
@@ -146,6 +158,69 @@ const previewText = props.profile.about.slice(0, 180)
 
 }
 
+.sheet-mark {
+
+    position:absolute;
+
+    top:15px;
+    right:15px;
+
+    width:96px;
+    height:96px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    opacity:.62;
+
+    transform:
+        rotate(5deg)
+        translate(.5px,1px);
+
+
+    z-index:5;
+
+    filter:
+        blur(.2px);
+
+}
+
+.sheet-mark :deep(svg) {
+
+    filter:
+        drop-shadow(
+            0 0 2px rgba(var(--signal-secondary-rgb), .2)
+        );
+
+}
+
+.sheet-mark::before {
+
+    content:"";
+
+    position:absolute;
+
+    inset: 0;
+
+    z-index:-1;
+
+    border-radius:18%;
+
+    background:
+        radial-gradient(
+            ellipse at 45% 55%,
+            rgba(var(--signal-secondary-rgb), .4),
+            transparent 65%
+        );
+
+    opacity: .5;
+
+    transform:
+        translate(2px, 3px)
+        rotate(-3deg);
+
+}
 
 /*
     Агитационный заголовок

@@ -10,7 +10,7 @@ withDefaults(
         pulse?: boolean
     }>(),
     {
-        size:'6',
+        size:'6px',
         color:'var(--signal-primary)',
         pulse:false
     }

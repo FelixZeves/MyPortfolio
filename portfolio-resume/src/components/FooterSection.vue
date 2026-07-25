@@ -1,0 +1,451 @@
+<script setup lang="ts">
+import { Icon } from '@iconify/vue';
+
+import type { Contact } from '@/types/contact.ts';
+
+import Logo from './ui/Logo.vue';
+
+import SignalLine from './ui/SignalLine.vue';
+import SignalPoint from './ui/SignalPoint.vue';
+import SignalCross from './ui/SignalCross.vue';
+
+
+defineProps<{
+    contacts: Contact[]
+}>()
+
+</script>
+
+<template>
+
+    <div class="footer-section">
+
+
+        <div class="
+            footer-body
+            industrial-data-panel
+        ">
+
+            <SignalLine
+                :position="{
+                    top: '0%',
+                    left:'0%'
+                }"
+                color="var(--signal-primary)"
+                length="100%"
+                thickness="2px"
+                :flow="true"
+                flowOffset="40px"
+            />
+
+            <div class="footer-logo-part">
+
+
+                <div class="footer-logo">
+
+                    <Logo class="footer-logo-image" color="var(--signal-additional)"/>
+
+                </div>
+
+                <div class="footer-logo-text">
+
+                    <span>software</span>
+                    
+                    <span>engineer</span>
+
+                </div>
+
+
+            </div>
+
+            <div class="footer-slash footer-slash-primary"></div>
+            
+            <div class="footer-contact-part">
+
+
+                <div class="footer-contacts">
+
+                    <div
+                        v-for="contact in contacts"
+                        :key="contact.type"
+                        class="footer-contact-row"
+                    >
+
+                        <Icon
+                            v-if="contact.icon"
+                            :icon="contact.icon"
+                            class="footer-contact-icon"
+                        />
+
+                        <span class="footer-contact-title">
+                            {{ contact.type }}
+                        </span>
+
+                        <a
+                            v-if="contact.url"
+                            :href="contact.url"
+                            target="_blank"
+                            class="footer-contact-value"
+                        >
+                            {{ contact.value }}
+                        </a>
+
+                        <span
+                            v-else
+                            class="footer-contact-value"
+                        >
+                            {{ contact.value }}
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+            <div class="footer-coordinates-part">
+
+
+                <div class="footer-slash footer-slash-secondary"></div>
+
+                <div class="footer-coordinates">
+
+
+                    <SignalPoint
+                    :position="{
+                        top: '29%',
+                        left: '0%'
+                    }"
+                    color="var(--signal-secondary)"
+                    :pulse="true"
+                    />
+
+                    <SignalCross
+                    :position="{
+                        top: '26%',
+                        left: '-4%'
+                    }"
+                    size="12px"
+                    color="var(--signal-secondary)"
+                    />
+
+                    <span class="footer-coordinates-title">
+                        LOCATION
+                    </span>
+
+                    <span>
+                        55°09'N
+                    </span>
+
+                    <span>
+                        61°24'E
+                    </span>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</template>
+
+<style scoped>
+
+.footer-body{
+
+    @apply
+        flex
+        flex-row
+        w-full
+        h-full
+        pe-1
+        ps-2
+        pt-2
+        mb-2
+        font-code;
+
+    position:relative;
+
+}
+
+.footer-logo-part{
+
+    @apply flex flex-row gap-2 z-10 pe-4;
+
+}
+
+.footer-logo{
+
+    @apply flex self-center w-[96px] h-[96px] shrink-0 ;
+    
+}
+
+.footer-logo-image{
+
+    @apply
+        w-full
+        h-full
+        block;
+
+    animation:
+        logo-signal 7s infinite;
+
+}
+
+
+@keyframes logo-signal{
+
+    0%,
+    88%,
+    100%{
+
+        filter:
+            drop-shadow(
+                0 0 0 transparent
+            );
+
+        transform:
+            translateX(0)
+            rotate(0deg);
+
+        opacity:1;
+
+    }
+
+
+    /* первый импульс */
+    90%{
+
+        filter:
+            drop-shadow(
+                2px 0 0 rgba(var(--signal-primary-rgb),.6)
+            )
+            drop-shadow(
+                -2px 0 0 rgba(var(--signal-secondary-rgb),.6)
+            );
+
+        transform:
+            translateX(-2px);
+
+        opacity:.75;
+
+    }
+
+
+    /* восстановление + вспышка */
+    92%{
+
+        filter:
+            drop-shadow(
+                0 0 12px rgba(var(--signal-primary-rgb),.8)
+            );
+
+        transform:
+            translateX(2px);
+
+        opacity:1;
+
+    }
+
+
+    /* потеря кадра */
+    94%{
+
+        filter:
+            drop-shadow(
+                0 0 6px rgba(var(--signal-primary-rgb), .45)
+            );
+
+        transform:
+            translateX(-1px);
+
+        opacity:.55;
+
+    }
+
+
+    /* возврат сигнала */
+    96%{
+
+        filter:
+            drop-shadow(
+                0 0 14px rgba(var(--signal-secondary-rgb), .5)
+            );
+
+        transform:
+            translateX(0);
+
+        opacity:.9;
+
+    }
+
+    98%{
+
+        opacity:.96;
+
+        filter:
+            drop-shadow(
+                0 0 4px rgba(var(--signal-secondary-rgb),.3)
+            );
+
+    }
+
+}
+
+.footer-logo-text{
+    
+    @apply flex flex-col gap-1 my-3 px-2 text-signal-additional border-l uppercase text-[.7rem] justify-center;
+
+}
+
+.footer-contact-part{
+
+    @apply
+        flex
+        flex-row
+        grow
+        basis-[60%]
+        mx-4
+        my-2
+        z-10;
+
+}
+
+.footer-slash{
+
+    width:2px;
+    height:90%;
+
+    transform:skewX(-12deg);
+
+    flex-shrink:0;
+
+}
+
+.footer-slash-primary{
+
+    @apply bg-signal-primary;
+
+}
+
+.footer-slash-secondary{
+
+    @apply bg-signal-secondary;
+
+}
+
+.footer-contacts{
+
+    @apply
+        grid
+        grid-cols-3
+        gap-x-6
+        gap-y-4
+        flex-1
+        ms-4;
+
+}
+
+.footer-contact-row{
+
+    display: grid;
+
+    grid-template-columns: 18px auto;
+
+    grid-template-areas:
+        "icon title"
+        "value value";
+
+    column-gap:.25rem;
+    row-gap:.1rem;
+
+    align-content: start;
+
+}
+
+.footer-contact-icon{
+
+    grid-area: icon;
+
+    @apply
+        text-signal-primary
+        text-[.85rem];
+
+}
+
+.footer-contact-title{
+
+    grid-area: title;
+
+    @apply
+        uppercase
+        text-signal-additional
+        text-[.62rem]
+        tracking-widest
+        leading-none;
+
+}
+
+.footer-contact-value{
+
+    grid-area: value;
+
+    @apply
+        text-signal-secondary
+        text-[.72rem]
+        tracking-tight
+        leading-tight;
+
+    padding-left: 5px;
+}
+
+.footer-coordinates-part{
+
+    @apply
+        flex
+        flex-row
+        w-[12%]
+        ms-4
+        z-10
+        shrink-0;
+
+}
+
+.footer-coordinates{
+
+    @apply
+        flex
+        flex-col
+        justify-center
+        relative
+        ms-3
+        uppercase
+        text-[.62rem];
+
+}
+
+.footer-coordinates-title{
+
+    @apply
+        text-signal-secondary
+        ps-3
+        mb-1
+        tracking-widest;
+
+}
+
+.footer-coordinates span:not(.footer-coordinates-title){
+
+    @apply text-paper;
+
+}
+
+</style>
