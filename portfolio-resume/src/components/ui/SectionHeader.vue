@@ -50,8 +50,8 @@
         linear-gradient(
             90deg,
             var(--signal-primary) 0%,
-            var(--industrial-navy) 55%,
-            var(--industrial-navy) 80%,
+            var(--industrial-navy) 65%,
+            var(--industrial-navy) 85%,
             var(--industrial-black) 100%
         );
 
@@ -194,7 +194,7 @@
 
 .section-header-code{
 
-    @apply text-[.8rem] tracking-[.25rem] font-code;
+    @apply text-[.8rem] tracking-[.25rem] font-code-ru !font-semibold;
 
     color:var(--signal-primary);
 

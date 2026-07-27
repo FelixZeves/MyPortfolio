@@ -23,8 +23,8 @@ defineProps<{
                 class="property-icon"
             />
 
-            <span>
-                PROPERTY
+            <span class="uppercase">
+                профиль.свойство
             </span>
 
         </header>
@@ -34,7 +34,7 @@ defineProps<{
 
             <span class="property-label">
 
-                VALUE
+                ЗНАЧЕНИЕ
 
             </span>
 
@@ -51,7 +51,7 @@ defineProps<{
 
             <span class="property-label">
 
-                DESCRIPTION
+                ОПИСАНИЕ
 
             </span>
 
@@ -151,6 +151,8 @@ border-left:
 
 .property-header{
 
+    font-family: var(--font-code-ru);
+
     display:flex;
 
     align-items:center;
@@ -195,6 +197,8 @@ border-left:
 
 .property-label{
 
+    font-family: var(--font-code-ru);
+
     font-size:.65rem;
 
     text-transform:uppercase;
@@ -208,6 +212,9 @@ border-left:
 
 .property-value{
 
+    font-family:
+        var(--font-code-ru);
+
     font-size:.8rem;
 
     line-height:1.4;
@@ -218,6 +225,9 @@ border-left:
 
 
 .property-description{
+
+    font-family:
+        var(--font-code-ru);
 
     font-size:.7rem;
 

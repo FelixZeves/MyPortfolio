@@ -36,8 +36,8 @@ const currentUnits = computed(() =>
 
 const currentDatabase = computed(() =>
     profile.value === 'professional'
-        ? 'PROFESSIONAL'
-        : 'PERSONAL'
+        ? 'ПРОФЕССИОНАЛЬНЫЕ НАВЫКИ'
+        : 'ЛИЧНЫЕ КАЧЕСТВА'
 )
 </script>
 
@@ -48,12 +48,12 @@ const currentDatabase = computed(() =>
     <div class="skills-console-header">
 
         <span class="skills-console-title">
-            PROFILE SCAN RESULT
+            результат сканирования профиля
         </span>
 
         <span class="skills-console-info">
 
-            DATABASE:
+            БАЗА ДАННЫХ:
             <span>
             {{ currentDatabase }}
             </span>
@@ -64,7 +64,7 @@ const currentDatabase = computed(() =>
             <span>
                 [{{ String(currentUnits + 1).padStart(5, '0') }}]
             </span>
-             DATA UNITS
+            ЕДИНИЦ ДАННЫХ
         </span>
 
         <signal-line
@@ -100,7 +100,7 @@ const currentDatabase = computed(() =>
                     class="skills-tab-icon"
                 />
 
-                <span class="uppercase">professional</span>
+                <span class="uppercase font-code-ru">профессиональный</span>
 
             </div>
 
@@ -119,7 +119,7 @@ const currentDatabase = computed(() =>
                     class="skills-tab-icon"
                 />
 
-                <span class="uppercase">personal</span>
+                <span class="uppercase font-code-ru">личный</span>
 
             </div>
 
@@ -244,6 +244,8 @@ const currentDatabase = computed(() =>
 
 .skills-console-title{
 
+    @apply uppercase font-code-ru;
+
     padding-bottom: .1rem;
 
     font-size:.75rem;
@@ -255,6 +257,8 @@ const currentDatabase = computed(() =>
 }
 
 .skills-console-info{
+
+    @apply !font-semibold font-code-ru;
 
     font-size:.65rem;
 

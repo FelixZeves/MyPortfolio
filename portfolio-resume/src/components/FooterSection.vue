@@ -49,9 +49,11 @@ defineProps<{
 
                 <div class="footer-logo-text">
 
-                    <span>software</span>
+                    <span>разработчик</span>
                     
-                    <span>engineer</span>
+                    <span>операционных</span>
+
+                    <span>систем</span>
 
                 </div>
 
@@ -124,7 +126,7 @@ defineProps<{
 
                     <SignalCross
                     :position="{
-                        top: '26%',
+                        top: '26.5%',
                         left: '-4%'
                     }"
                     size="12px"
@@ -132,15 +134,15 @@ defineProps<{
                     />
 
                     <span class="footer-coordinates-title">
-                        LOCATION
+                        локация
                     </span>
 
                     <span>
-                        55°09'N
+                        55.1644° N
                     </span>
 
                     <span>
-                        61°24'E
+                        61.4368° E
                     </span>
 
 
@@ -347,10 +349,10 @@ defineProps<{
     @apply
         grid
         grid-cols-3
-        gap-x-6
+        gap-x-7
         gap-y-4
         flex-1
-        ms-4;
+        ms-2;
 
 }
 
@@ -400,6 +402,7 @@ defineProps<{
 
     @apply
         text-signal-secondary
+        text-nowrap
         text-[.72rem]
         tracking-tight
         leading-tight;
@@ -436,6 +439,8 @@ defineProps<{
 
     @apply
         text-signal-secondary
+        font-code-ru
+        uppercase
         ps-3
         mb-1
         tracking-widest;

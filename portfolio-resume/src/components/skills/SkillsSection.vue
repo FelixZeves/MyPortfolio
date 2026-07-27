@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, nextTick } from 'vue';
+import { ref, nextTick, computed } from 'vue';
 import { Icon } from '@iconify/vue';
 
 import type { Skill } from '@/types/skill.ts';
@@ -97,6 +97,12 @@ async function onProfileChange(
 
 }
 
+const currentMode = computed(() =>
+    currentProfile.value === 'professional'
+        ? 'ПРОФЕССИОНАЛЬНЫЙ'
+        : 'ЛИЧНЫЙ'
+)
+
 </script>
 
 
@@ -146,25 +152,25 @@ async function onProfileChange(
             </div>
 
             <header class="section-title skills-header">
-                04_SK1LLS
+                04_НАВЫКИ
             </header>
 
             <div class="skills-meta">
 
-                <span>
+                <span class="font-code-ru">
                     <Icon
                         icon="mdi:hexagon"
                         class="text-signal-secondary"
                     />
-                    PERSON_ANALYSIS
+                    АНАЛИЗ ПЕРСОНЫ
                 </span>
 
-                <span>
+                <span class="font-code-ru">
                     <Icon
                         icon="mdi:hexagon"
                         class="text-signal-secondary"
                     />
-                    MODE: {{ currentProfile.toUpperCase() }}_SKILLS
+                    РЕЖИМ: {{ currentMode }}
                 </span>
 
             </div>
@@ -375,6 +381,12 @@ async function onProfileChange(
     align-items:center;
 
     gap:.35rem;
+
+}
+
+.skills-meta svg{
+
+    @apply w-[10px] h-[10px] shrink-0 mb-[.35rem] text-signal-secondary;
 
 }
 

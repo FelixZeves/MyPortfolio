@@ -28,8 +28,8 @@ defineProps<{
         />
 
 
-        <span>
-            PROFILE.SIGNAL
+        <span class="uppercase">
+            профиль.сигнал
         </span>
 
 
@@ -39,8 +39,8 @@ defineProps<{
     <div class="highlight-content">
 
 
-        <span class="highlight-label">
-            ACTIVE TRAIT
+        <span class="uppercase highlight-label">
+            действующий навык
         </span>
 
 
@@ -139,6 +139,9 @@ background:
 
 .highlight-header{
 
+    font-family:
+        var(--font-code-ru);
+
     display:flex;
 
     align-items:center;
@@ -189,6 +192,9 @@ background:
 
 .highlight-label{
 
+    font-family:
+        var(--font-code-ru);
+
     font-size:.65rem;
 
     letter-spacing:.22em;
@@ -201,6 +207,9 @@ background:
 
 
 .highlight-title{
+
+    font-family:
+        var(--font-code-ru);
 
     margin:0;
 
@@ -220,6 +229,9 @@ background:
 
 
 .highlight-description{
+
+    font-family:
+        var(--font-code-ru);
 
     margin:0;
 

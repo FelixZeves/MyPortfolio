@@ -83,7 +83,7 @@ const props = defineProps<{
                 </span>
 
                 <span>
-                    CHELYABINSK
+                    ЧЕЛЯБИНСК
                 </span>
 
             </div>
@@ -96,11 +96,11 @@ const props = defineProps<{
             <div class="panel-header">
 
                 <SignalIndicator/>
-                <span>ENGINEER PROFILE</span>
+                <span>ПРОФИЛЬ ИНЖЕНЕРА</span>
 
             </div>
 
-            <h2>
+            <h2 class="font-code-ru !tracking-[.25rem] font-bold">
                 
                 {{ profile.title.toUpperCase() }}
 
@@ -186,7 +186,9 @@ const props = defineProps<{
 
     flex-direction:column;
 
-    font-family:var(--font-code);
+    font-family:var(--font-code-ru);
+
+    font-weight: 600;
 
     font-size:.65rem;
 
@@ -230,11 +232,13 @@ const props = defineProps<{
 
     gap:.5rem;
 
-    font-family:var(--font-code);
+    font-family:var(--font-code-ru);
 
-    font-size:.65rem;
+    font-weight: 500;
 
-    letter-spacing:.35em;
+    font-size:.7rem;
+
+    letter-spacing:.3em;
 
     color:var(--signal-secondary);
 

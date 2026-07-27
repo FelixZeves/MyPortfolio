@@ -69,7 +69,7 @@ const hasNavigation = computed(() =>
         />
 
         <header class="projects-header section-title">
-                02_PR0JECTS
+                02_ПРОЕКТЫ
         </header>
 
         <q-carousel

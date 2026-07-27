@@ -1,9 +1,9 @@
 export type ContactType = 
     | 'email'
-    | 'phone'
+    | 'телефон'
     | 'telegram'
     | 'github'
-    | 'location'
+    | 'локация'
 
 export interface Contact {
     type: ContactType

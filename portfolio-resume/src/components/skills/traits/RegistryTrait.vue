@@ -28,8 +28,8 @@ defineProps<{
                 class="registry-icon"
             />
 
-            <span>
-                PROFILE.REGISTRY
+            <span class="uppercase">
+                профиль.реестр
             </span>
 
 
@@ -40,7 +40,7 @@ defineProps<{
 
 
             <span class="registry-label">
-                VALUE
+                ЗНАЧЕНИЕ
             </span>
 
             <span class="registry-value">
@@ -55,7 +55,7 @@ defineProps<{
 
 
             <span class="registry-label">
-                DESCRIPTION
+                ОПИСАНИЕ
             </span>
 
             <p class="registry-description">
@@ -157,24 +157,22 @@ defineProps<{
 
 .registry-header{
 
+    font-family: var(--font-code-ru);
+
     display:flex;
 
     align-items:center;
 
     gap:.5rem;
 
-
     padding-bottom:.5rem;
-
 
     border-bottom:
         1px dashed rgba(var(--signal-secondary-rgb),.35);
 
-
     font-size:.65rem;
 
     letter-spacing:.18em;
-
 
     color:
         var(--signal-secondary);
@@ -216,6 +214,8 @@ defineProps<{
 
 .registry-label{
 
+    font-family: var(--font-code-ru);
+
     font-size:.65rem;
 
     letter-spacing:.2em;
@@ -230,7 +230,7 @@ defineProps<{
 .registry-key{
 
     font-family:
-        var(--font-code);
+        var(--font-code-ru);
 
     font-size:.75rem;
 
@@ -242,6 +242,9 @@ defineProps<{
 
 
 .registry-value{
+
+    font-family:
+        var(--font-code-ru);
 
     font-size:.85rem;
 

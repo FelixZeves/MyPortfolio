@@ -6,7 +6,8 @@ export const resume: Resume = {
         firstName: 'Феликс',
         surname: 'Зиновьев',
         patronymic: 'Викторович',
-        title: "Software engineer",
+        birthday: new Date(2002, 8, 18),
+        title: "Разработчик ПО",
         specialization: ['Frontend разработчик', 'Backend разработчик'],
         photo: userPhoto,
         about: `
@@ -24,7 +25,7 @@ Framework, а также на проектировании высоконагр�
 
     contacts: [
         {
-            type: 'location',
+            type: 'локация',
             value: "г. Челябинск",
             icon: 'mdi:location'
         },
@@ -36,7 +37,7 @@ Framework, а также на проектировании высоконагр�
         },
     
         {
-            type: 'phone',
+            type: 'телефон',
             value: '+7 (929) 236-90-53',
             icon: 'mdi:phone'
         },

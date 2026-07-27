@@ -3,6 +3,8 @@ export interface Profile {
     surname: string
     patronymic: string
 
+    birthday: Date
+
     photo?: string
 
     title: string

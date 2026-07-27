@@ -12,18 +12,44 @@ const props = defineProps<{
     languages: Language[]
 }>()
 
+const age = computed(() => {
+
+    const today = new Date()
+    const birthday = props.profile.birthday
+
+    let years = today.getFullYear() - birthday.getFullYear()
+
+    const hasBirthdayPassed =
+        today.getMonth() > birthday.getMonth() ||
+        (
+            today.getMonth() === birthday.getMonth() &&
+            today.getDate() >= birthday.getDate()
+        )
+
+    if (!hasBirthdayPassed) {
+        years--
+    }
+
+    return years
+
+})
+
 const profileFields = computed(() => [
     {
-        key: 'surname',
+        key: 'фамилия',
         value: props.profile.surname
     },
     {
-        key: 'firstName',
+        key: 'имя',
         value: props.profile.firstName
     },
     {
-        key: 'patronymic',
+        key: 'отчество',
         value: props.profile.patronymic
+    },
+    {
+        key: 'возраст',
+        value: age.value
     }
 ])
 
@@ -50,7 +76,7 @@ const specialization = computed(() =>
     >
 
         <header class="section-title z-10">
-                01_PR0F1LE_DATA
+                01_ДАННЫЕ_ПРОФИЛЯ
         </header>
 
         <div class="flex flex-col gap-2 pe-1 z-10">
@@ -78,7 +104,7 @@ const specialization = computed(() =>
 
                 <div class="flex justify-between">
                     <span class="code-key">
-                        specialization:
+                        специализации:
                     </span>
                 </div>
 
@@ -102,7 +128,7 @@ const specialization = computed(() =>
             <div class="flex flex-col pl-4">
 
                 <span class="code-key">
-                    languages:
+                    языки:
                 </span>
 
                 <span class="text-signal-additional">
@@ -121,7 +147,7 @@ const specialization = computed(() =>
 
                     <div class="pl-4 flex justify-between">
                         <span class="code-key">
-                            name:
+                            название:
                         </span>
 
                         <span class="code-value">
@@ -132,7 +158,7 @@ const specialization = computed(() =>
 
                     <div class="pl-4 flex justify-between">
                         <span class="code-key">
-                            level:
+                            уровень:
                         </span>
 
                         <span class="code-value">
@@ -174,11 +200,11 @@ const specialization = computed(() =>
 <style scoped>
 
 .code-value{
-    @apply text-signal-secondary
+    @apply font-code-ru text-signal-secondary
 }
 
 .code-key{
-    @apply text-signal-primary
+    @apply font-code-ru text-signal-primary font-semibold
 }
 
 </style>

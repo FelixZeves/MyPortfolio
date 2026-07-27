@@ -19,8 +19,8 @@ defineProps<{
 
         <SectionHeader
             :number="'03'"
-            :paper="'Expe'"
-            :code="'RIENCE'"
+            :paper="'Образова'"
+            :code="'НИЕ-И-ОПЫТ'"
         />
 
         <div class="experience-content">

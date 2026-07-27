@@ -27,6 +27,8 @@
 @import "@fontsource/golos-text/500.css";
 @import "@fontsource/golos-text/600.css";
 
+@import 'victormono';
+
 .font-numeric {
     font-variant-numeric: tabular-nums;
 }

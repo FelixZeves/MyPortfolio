@@ -79,7 +79,7 @@ return cut.slice(
                 flat
                 class="analyze-btn"
             >
-                > ANALYZE_
+                > Анализировать
             </q-btn>
         </footer>
 
@@ -325,7 +325,7 @@ return cut.slice(
 .analyze-btn{
 
     @apply
-        font-code
+        font-code-ru
         text-xs;
 
     color:var(--signal-primary);

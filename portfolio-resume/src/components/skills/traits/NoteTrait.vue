@@ -27,8 +27,8 @@ defineProps<{
             class="note-icon"
         />
 
-        <span>
-            PROFILE.TEXT
+        <span class="uppercase">
+            профиль.текст
         </span>
 
 
@@ -122,6 +122,9 @@ defineProps<{
 
 .note-header{
 
+    font-family:
+        var(--font-code-ru);
+
     display:flex;
 
     align-items:center;
@@ -177,6 +180,9 @@ defineProps<{
 
 .note-label{
 
+    font-family:
+        var(--font-code-ru);
+
     font-size:.65rem;
 
     letter-spacing:.2em;
@@ -203,6 +209,9 @@ defineProps<{
 
 
 .note-description{
+
+    font-family:
+        var(--font-code-ru);
 
     margin:0;
 
