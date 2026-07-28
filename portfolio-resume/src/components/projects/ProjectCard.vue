@@ -8,23 +8,28 @@ import SignalLine from '../ui/SignalLine.vue';
 
 const props = defineProps<{
     project: Project
+    expanded: boolean
+}>()
+
+const emit = defineEmits<{
+    (e: 'toggle'): void
 }>()
 
 const shortDescription = computed(() => {
 
-const maxLength = 75;
+    const maxLength = 75;
 
-const text = props.project.description;
+    const text = props.project.description;
 
-if (text.length <= maxLength)
-    return text;
+    if (text.length <= maxLength)
+        return text;
 
-const cut = text.slice(0,maxLength);
+    const cut = text.slice(0,maxLength);
 
-return cut.slice(
-    0,
-    cut.lastIndexOf(" ")
-) + "...";
+    return cut.slice(
+        0,
+        cut.lastIndexOf(" ")
+    ) + "...";
 
 });
 
@@ -46,7 +51,7 @@ return cut.slice(
         </div>
 
         <p class="project-description">
-            {{ shortDescription || project.description }}
+            {{ expanded ? project.description : shortDescription }}
         </p>
 
         <div class="project-stack">
@@ -63,6 +68,32 @@ return cut.slice(
 
         </div>
 
+        <div
+            v-if="expanded"
+            class="project-responsibilities"
+        >
+
+            <h4 class="project-subtitle">
+                Особенности
+            </h4>
+
+            <ul>
+
+                <li
+                    v-for="item in project.responsibilities"
+                    :key="item"
+                >
+                <Icon
+                icon="mdi:hexagon"
+                class="text-signal-secondary"
+                />
+                    {{ item }}
+                </li>
+
+            </ul>
+
+        </div>
+
         <footer class="project-footer">
             <signal-line
                 :position="{
@@ -75,12 +106,25 @@ return cut.slice(
                 :flow="true"
                 flowOffset='15px'
             />
+
             <q-btn
+                v-if="!expanded"
                 flat
                 class="analyze-btn"
+                @click="emit('toggle')"
             >
                 > Анализировать
             </q-btn>
+
+            <q-btn
+                v-else
+                flat
+                class="analyze-btn"
+                @click="emit('toggle')"
+            >
+                > Завершить анализ
+            </q-btn>
+                        
         </footer>
 
     </div>
@@ -104,12 +148,14 @@ return cut.slice(
         auto
         1fr
         auto
+        auto
         auto;
 
     grid-template-areas:
         "title image"
         "description image"
         "stack stack"
+        "response response"
         "footer footer";
 
     gap: .75rem;
@@ -139,7 +185,7 @@ return cut.slice(
         ),
 
         var(--industrial-navy);
-
+    
 }
 
 .project-card::before{
@@ -310,6 +356,60 @@ return cut.slice(
     @apply !text-xs;
 
     color: var(--signal-secondary);
+}
+
+.project-responsibilities{
+
+    grid-area: response;
+
+    display:flex;
+    flex-direction:column;
+    gap:.1rem;
+
+}
+
+.project-subtitle{
+
+    color:var(--signal-primary);
+
+    font-family: var(--font-code-ru);
+
+    letter-spacing:.15em;
+
+    font-size:.8rem;
+
+    text-transform:uppercase;
+
+    padding-left: .25rem;
+
+}
+
+.project-responsibilities ul{
+
+    display:flex;
+    flex-direction:column;
+
+    gap:.5rem;
+
+    padding-left:1rem;
+
+}
+
+.project-responsibilities li{
+
+    @apply flex flex-row gap-x-2;
+
+    list-style:none;
+
+    position:relative;
+
+
+}
+
+.project-responsibilities svg{
+
+    @apply mt-[.15rem]
+
 }
 
 .project-footer{

@@ -56,7 +56,7 @@ const aboutExpanded = ref(false)
 
     transition:
         grid-template-columns
-        .5s
+        .5s;
 
 }
 

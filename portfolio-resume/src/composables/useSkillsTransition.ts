@@ -1,7 +1,7 @@
 import { ref } from 'vue';
 import { gsap } from 'gsap';
 
-import type { OverlayController } from '@/components/ui/SignalOverlay.vue';
+import type { OverlayController } from '@/types/systemOverlay';
 
 export function useSkillsTransition(){
 

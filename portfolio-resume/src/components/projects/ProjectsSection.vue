@@ -7,6 +7,7 @@ import type { Project } from '@/types/project.ts';
 
 import SignalOverlay from '../ui/SignalOverlay.vue';
 import ProjectCard from './ProjectCard.vue';
+import { useProjectsFlip } from '@/composables/useProjectsFlip.ts';
 
 
 const props = defineProps<{
@@ -38,6 +39,33 @@ const projectGroups = computed(() => {
     return groups;
 });
 
+const container = ref<HTMLElement|null>(null)
+
+const {
+    animateCollapse,
+    animateExpand
+} = useProjectsFlip()
+
+const expandedProject = ref<string | null>(null)
+
+async function toggleProject(name: string) {
+
+    if (expandedProject.value === name) {
+
+        await animateCollapse(container.value!, () => {
+            expandedProject.value = null
+        })
+
+    } else {
+
+        await animateExpand(container.value!, () => {
+            expandedProject.value = name
+        })
+
+    }
+
+}
+
 const nextSlide = () => {
 
     slide.value =
@@ -61,7 +89,7 @@ const hasNavigation = computed(() =>
 
 <template>
 
-    <section class="projects-section">
+    <section ref="container" class="projects-section">
         <SignalOverlay
             :lines="8"
             :points="6"
@@ -76,11 +104,11 @@ const hasNavigation = computed(() =>
             v-model="slide"
             transition-prev="slide-right"
             transition-next="slide-left"
-            animated
-            swipeable
             infinite
             control-color="signal-primary"
             class="projects-carousel"
+            :swipeable="!expandedProject"
+            :animated="!expandedProject"
         >
 
             <q-carousel-slide
@@ -88,19 +116,27 @@ const hasNavigation = computed(() =>
                 :key="index"
                 :name="index"
                 class="projects-slide"
+                :class="{expanded : expandedProject}"
             >
 
                 <ProjectCard
                     v-for="project in group"
                     :key="project.name"
                     :project="project"
+                    :expanded="expandedProject === project.name"
+                    @toggle="toggleProject(project.name)"
+                    :class="{
+                        hidden:
+                            expandedProject &&
+                            expandedProject !== project.name
+                    }"
                 />
 
             </q-carousel-slide>
 
         </q-carousel>
 
-        <div class="projects-navigator px-8">
+        <div v-show="!expandedProject" class="projects-navigator px-8">
 
             <button
                 v-if="hasNavigation"
@@ -190,7 +226,26 @@ const hasNavigation = computed(() =>
 }
 
 .projects-slide{
-    @apply flex flex-row gap-x-8 justify-center h-full;
+    @apply gap-x-6 h-full;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,minmax(0,1fr));
+
+}
+
+.projects-slide.expanded{
+
+    grid-template-columns: 1fr;
+
+}
+
+.project-card.hidden{
+
+    opacity:0;
+
+    pointer-events:none;
 
 }
 
