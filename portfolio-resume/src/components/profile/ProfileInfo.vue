@@ -204,7 +204,7 @@ const specialization = computed(() =>
 }
 
 .code-key{
-    @apply font-code-ru text-signal-primary font-semibold
+    @apply font-code-ru text-signal-primary font-semibold tracking-wider
 }
 
 </style>

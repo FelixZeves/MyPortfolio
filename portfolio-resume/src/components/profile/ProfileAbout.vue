@@ -1,16 +1,49 @@
 <script setup lang="ts">
+import { computed, ref, watch } from 'vue'
 
 import type { Profile } from '@/types/profile.ts';
 
 import Logo from '../ui/Logo.vue';
+import { getEmploymentFormatName, getEmploymentTypeName } from '@/utils/employment.ts';
 
 
 const props = defineProps<{
     profile: Profile
 }>()
 
+const isExpanded = defineModel<boolean>('expanded')
 
-const previewText = props.profile.about.slice(0, 180)
+const showFullText = ref(false)
+
+watch(isExpanded, expanded => {
+
+    if (expanded) {
+
+        setTimeout(() => {
+            showFullText.value = true
+        }, 450)
+
+    } else {
+
+        showFullText.value = false
+
+    }
+
+})
+
+const previewText = computed(() =>
+    showFullText.value
+        ? props.profile.about
+        : `${props.profile.about.slice(0, 180)}...`
+)
+
+const employmentType = computed(
+    () => getEmploymentTypeName(props.profile.employment.type)
+)
+
+const employmentFormat = computed(
+    () => getEmploymentFormatName(props.profile.employment.format)
+)
 
 </script>
 
@@ -31,37 +64,97 @@ const previewText = props.profile.about.slice(0, 180)
 
 
     <!-- Главный лозунг -->
-    <h2 class="about-summary">
+    <h2
+        class="about-summary"
+        :class="{ hidden : isExpanded}"
+    >
         {{ profile.summary }}
     </h2>
 
+    <h3
+        v-if="isExpanded"
+        class="about-title"
+    >
+        {{ profile.title }}
+    </h3>
 
     <!-- Техническая выдержка -->
-    <div class="about-preview">
+    <div
+        class="about-preview"
+        :class="{ expanded: isExpanded }"
+    >
+        {{ previewText }}
+    </div>
 
-        {{ previewText }}...
+    <div
+        v-if="isExpanded"
+        class="about-details"
+    >
+
+        <div class="detail-group">
+
+            <div class="font-poster uppercase text-sm">
+                предпочтения в работе
+            </div>
+
+            <div class="detail-col">
+                <span class="detail-key">Тип занятости</span>
+                <span class="detail-value">{{ employmentType }}</span>
+            </div>
+
+            <div class="detail-col">
+                <span class="detail-key">Формат работы</span>
+                <span class="detail-value">{{ employmentFormat }}</span>
+            </div>
+
+            <div class="detail-col">
+                <span class="detail-key">Доход</span>
+                <span class="detail-value">{{ profile.employment.salary }}</span>
+            </div>
+
+        </div>
+
+        <div class="detail-group">
+
+            <div class="font-poster uppercase text-sm">
+                доп. информация
+            </div>
+
+            <div class="detail-col">
+                <span class="detail-key">Семейное положение</span>
+                <span class="detail-value">{{ profile.personal.maritalStatus }}</span>
+            </div>
+
+            <div v-if="profile.personal.drivingLicense" class="detail-col">
+                <span class="detail-key">Водительские права</span>
+                <span class="detail-value">
+                    {{  'Категории: ' + profile.personal.drivingLicense }}
+                </span>
+            </div>
+
+        </div>
 
     </div>
 
 
     <div class="about-actions">
 
-    <q-btn
-        outline
-        class="info-btn"
-        icon-right="arrow_forward"
-    >
-        УЗНАТЬ БОЛЬШЕ
-    </q-btn>
+        <q-btn
+            outline
+            class="info-btn"
+            @click="isExpanded = !isExpanded"
+        >
+            {{ isExpanded ? 'СВЕРНУТЬ' : 'УЗНАТЬ БОЛЬШЕ' }}
+        </q-btn>
 
 
-    <q-btn
-        flat
-        class="pdf-btn"
-        icon="picture_as_pdf"
-    >
-        СКАЧАТЬ PDF
-    </q-btn>
+        <q-btn
+            flat
+            class="pdf-btn"
+            icon="picture_as_pdf"
+        >
+            СКАЧАТЬ PDF
+        </q-btn>
 
     </div>
 
@@ -172,7 +265,7 @@ const previewText = props.profile.about.slice(0, 180)
     align-items:center;
     justify-content:center;
 
-    opacity:.62;
+    opacity:.5;
 
     transform:
         rotate(5deg)
@@ -251,10 +344,49 @@ const previewText = props.profile.about.slice(0, 180)
     letter-spacing:
         -0.03em;
 
+    transition:
+        opacity .45s ease,
+        transform .45s ease;
 
     color:
         var(--industrial-black);
 
+}
+
+.about-summary.hidden{
+
+    opacity:0;
+
+    transform:
+        translateY(-36px);
+
+    pointer-events:none;
+
+}
+
+.about-title{
+
+    z-index: 10;
+
+    margin:0;
+
+    max-width:90%;
+
+    font-size: 24px;
+
+    font-family: var(--font-poster);
+
+    font-weight:
+        600;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        -0.03em;
+
+    color:
+        var(--industrial-black);
 
 }
 
@@ -263,6 +395,14 @@ const previewText = props.profile.about.slice(0, 180)
     position:relative;
 
     margin-top:20px;
+    margin-bottom: 20px;
+
+    padding-left: .25rem;
+    padding-right: .25rem;
+
+    transition:
+        transform .45s ease,
+        margin .45s ease;
 
     font-size: 12px;
 
@@ -271,8 +411,17 @@ const previewText = props.profile.about.slice(0, 180)
     line-height: 1.6;
 
     color:
-        rgba(0,0,0,.65);
+        rgba(var(--industrial-black-rgb),.65);
 
+}
+
+.about-preview.expanded{
+
+    margin-top: 0px;
+
+    font-size: 14px;
+
+    color: var(--industrial-black)
 
 }
 
@@ -300,12 +449,51 @@ const previewText = props.profile.about.slice(0, 180)
             var(--paper)
         );
 
+    transition:
+        opacity .3s;
+
 }
 
+.about-preview.expanded::after{
 
-/*
-    кнопки
-*/
+    opacity:0;
+
+}
+
+.about-details{
+
+    display: flex;
+
+    flex-direction: row;
+
+    justify-content: space-between;
+
+    margin-inline: .25rem;
+
+}
+
+.detail-group{
+    @apply flex flex-col gap-y-1
+}
+
+.detail-col{
+
+    @apply flex flex-col
+
+}
+
+.detail-key{
+
+    @apply text-sm font-semibold opacity-75
+
+}
+
+.detail-value{
+
+@apply text-sm
+
+}
+
 
 .about-actions {
 

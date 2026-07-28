@@ -19,8 +19,17 @@ Framework, а также на проектировании высоконагр�
 позволяет быстро осваивать новые технологии и вливаться в новые
 специфичные задачи. В работе ценю интересные задачи, профессиональный рост и возможность изучать современные
 технологии.`.trim(),
-        summary:`Создаю цифровые системы через инженерное мышление`.trim(),
-        knowledges: ['Frontend', 'Backend', 'Systems']
+        summary: `Создаю цифровые системы через инженерное мышление`.trim(),
+        knowledges: ['Frontend', 'Backend', 'Systems'],
+        employment: {
+            type: "full-time",
+            format: "hybrid",
+            salary: "50-70 тыс. рублей"
+        },
+        personal: {
+            maritalStatus: 'Холост',
+            drivingLicense: "B, B1, M"
+        }
     },
 
     contacts: [
