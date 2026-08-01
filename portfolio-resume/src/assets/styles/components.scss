@@ -123,81 +123,204 @@
   
   }
 
-    .cutting-mat {
+  .industrial-data-panel-light {
 
-        position: relative;
-    
-        background:
-          linear-gradient(
-            135deg,
-            var(--cutting-mat-base),
-            var(--cutting-mat-surface),
-            var(--cutting-mat-shadow)
-          );
-    
-    
-    }
-    
-    
-    .cutting-mat::before {
-    
-        content:"";
-    
-        position:absolute;
-        inset:0;
-    
-        background:
-    
-          /* мелкая сетка */
-          linear-gradient(
-            var(--cutting-mat-grid) 1px,
-            transparent 1px
-          ),
-      
-          linear-gradient(
-            90deg,
-            var(--cutting-mat-grid) 1px,
-            transparent 1px
-          ),
-      
-          /* крупная сетка */
-          linear-gradient(
-            var(--cutting-mat-grid-major) 1px,
-            transparent 1px
-          ),
-      
-          linear-gradient(
-            90deg,
-            var(--cutting-mat-grid-major) 1px,
-            transparent 1px
-          );
-    
-          background-size:
-            8px 8px,
-            8px 8px,
-        
-            48px 48px,
-            48px 48px,
-            
-            auto;
-    
-        pointer-events:none;
-    
-    }
+    position: relative;
 
-    .section-title{
+    overflow: hidden;
 
-      @apply
-          flex
-          items-center
-          text-[.8rem]
-          tracking-[.25rem]
-          font-code-ru
-          text-signal-primary
-          !font-semibold;
+    background:
+      linear-gradient(
+          90deg,
+          var(--industrial-navy),
+          var(--industrial-black)
+      );
+
+
+    /* Техническая сетка */
+
+    &::before {
+
+      content:"";
   
-      line-height:1;
+      position:absolute;
+  
+      inset:0;
+  
+      background:
+  
+          linear-gradient(
+              var(--technical-grid-soft) 1px,
+              transparent 1px
+          ),
+  
+          linear-gradient(
+              90deg,
+              var(--technical-grid-soft) 1px,
+              transparent 1px
+          ),
+  
+          linear-gradient(
+              var(--technical-grid-major) 2px,
+              transparent 1px
+          ),
+  
+          linear-gradient(
+              90deg,
+              var(--technical-grid-major) 2px,
+              transparent 1px
+          );
+  
+  
+      background-size:
+  
+          40px 40px,
+          40px 40px,
+  
+          120px 120px,
+          120px 120px;
+  
+  
+      opacity:.35;
+  
+  
+      pointer-events:none;
   
     }
+
+  }
+
+  .cutting-mat {
+
+      position: relative;
+  
+      background:
+        linear-gradient(
+          135deg,
+          var(--cutting-mat-base),
+          var(--cutting-mat-surface),
+          var(--cutting-mat-shadow)
+        );
+  
+  
+  }
+    
+    
+  .cutting-mat::before {
+  
+      content:"";
+  
+      position:absolute;
+      inset:0;
+  
+      background:
+  
+        /* мелкая сетка */
+        linear-gradient(
+          var(--cutting-mat-grid) 1px,
+          transparent 1px
+        ),
+    
+        linear-gradient(
+          90deg,
+          var(--cutting-mat-grid) 1px,
+          transparent 1px
+        ),
+    
+        /* крупная сетка */
+        linear-gradient(
+          var(--cutting-mat-grid-major) 1px,
+          transparent 1px
+        ),
+    
+        linear-gradient(
+          90deg,
+          var(--cutting-mat-grid-major) 1px,
+          transparent 1px
+        );
+  
+        background-size:
+      
+          48px 48px,
+          48px 48px,
+          
+          auto;
+  
+      pointer-events:none;
+  
+  }
+
+  .pdf-notify {
+
+    display: flex;
+
+    flex-direction: column;
+
+    min-width: 320px;
+    max-width: 420px;
+
+    padding: 14px 18px;
+
+    border: 1px solid rgba(var(--signal-primary-rgb), .45);
+
+    border-left: 4px solid var(--signal-primary);
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(var(--industrial-navy-rgb), .98),
+            rgba(var(--industrial-black-rgb), .98)
+        );
+
+    color: var(--signal-primary);
+
+    font-family: var(--font-code-ru);
+
+    letter-spacing: .14em;
+
+    font-size: .7rem;
+
+    text-transform: uppercase;
+
+    box-shadow:
+        0 0 18px rgba(var(--signal-primary-rgb), .15),
+        inset 0 0 0 1px rgba(var(--signal-secondary-rgb), .08);
+
+  }
+
+  .pdf-notify::before {
+
+    content:"PDF EXPORT";
+
+    display:block;
+
+    margin-bottom:8px;
+
+    padding-bottom:6px;
+
+    border-bottom:1px solid rgba(var(--signal-secondary-rgb), .25);
+
+    color:var(--signal-secondary);
+
+    font-size:.62rem;
+
+    letter-spacing:.3em;
+
+}
+
+  .section-title{
+
+    @apply
+        flex
+        items-center
+        text-[.8rem]
+        tracking-[.25rem]
+        font-code-ru
+        text-signal-primary
+        !font-semibold;
+
+    line-height:1;
+
+  }
 
 }

@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 
+import { useQuasar } from 'quasar'
+
+const $q = useQuasar()
+
 import type { Profile } from '@/types/profile.ts';
 
 import Logo from '../ui/Logo.vue';
@@ -44,6 +48,71 @@ const employmentType = computed(
 const employmentFormat = computed(
     () => getEmploymentFormatName(props.profile.employment.format)
 )
+
+async function downloadPdf() {
+
+    const notify = $q.notify({
+        spinner: true,
+        timeout: 0,
+        group: false,
+        position: "top",
+        classes: "pdf-notify",
+        message: "Подготовка документа..."
+    })
+
+    try {
+
+        setTimeout(() => {
+            notify({
+                message: "Формирование страниц..."
+            })
+        }, 700)
+
+        setTimeout(() => {
+            notify({
+                message: "Оптимизация PDF..."
+            })
+        }, 800)
+
+        const response = await fetch("/api/pdf", {
+            method: "POST"
+        })
+
+        if (!response.ok) {
+            throw new Error("Ошибка генерации PDF")
+        }
+
+        const blob = await response.blob()
+
+        const url = URL.createObjectURL(blob)
+
+        const a = document.createElement("a")
+
+        a.href = url
+        a.download = "portfolio.pdf"
+        a.click()
+
+        URL.revokeObjectURL(url)
+
+        notify({
+            spinner: false,
+            icon: "done_all",
+            timeout: 2500,
+            message: "экспорт выполнен"
+        })
+
+    } catch {
+
+        notify({
+            spinner: false,
+            icon: "code_off",
+            timeout: 4000,
+            message: "ошибка сервера"
+        })
+
+    }
+
+}
 
 </script>
 
@@ -152,6 +221,7 @@ const employmentFormat = computed(
             flat
             class="pdf-btn"
             icon="picture_as_pdf"
+            @click="downloadPdf"
         >
             СКАЧАТЬ PDF
         </q-btn>

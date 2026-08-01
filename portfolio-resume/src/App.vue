@@ -1,11 +1,8 @@
 <script setup lang="ts">
-import IndexPage from './pages/IndexPage.vue';
 </script>
 
 <template>
-  <IndexPage/>
-</template>
+  
+  <RouterView/>
 
-<style scoped>
-@import "@/assets/styles/main.scss";
-</style>
+</template>
