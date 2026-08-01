@@ -20,7 +20,7 @@ const props = defineProps<{
 
     <div class="profile-photo">
 
-        <div class="overflow-hidden w-full h-full grayscale-[85%] contrast-[1.1]">
+        <div class="photo-gradient overflow-hidden w-full h-full grayscale-[80%] contrast-[1]">
 
             <img
                 :src="profile.photo"
@@ -200,6 +200,23 @@ const props = defineProps<{
 
     opacity:.9;
 
+}
+
+.photo-gradient::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(var(--industrial-black-rgb),1) 0%,
+            rgba(var(--industrial-black-rgb),.45) 35%,
+            transparent 65%
+        );
 }
 
 .role-panel {

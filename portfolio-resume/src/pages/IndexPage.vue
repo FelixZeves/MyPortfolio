@@ -50,11 +50,8 @@ import ResumeFrame from '@/components/ui/ResumeFrame.vue';
 
     </resume-frame>
 
+
   </main>
+
+
 </template>
-
-<style scoped>
-
-
-
-</style>

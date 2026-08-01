@@ -259,9 +259,9 @@ const employmentFormat = computed(
 
     align-self: center;
 
-    width:200px;
+    width:220px;
 
-    aspect-ratio:3 / 4;
+    aspect-ratio:3 / 5;
 
     flex-shrink:0;
 
@@ -304,7 +304,7 @@ const employmentFormat = computed(
 
     height:100%;
 
-    object-fit:cover;
+    object-fit: cover;
 
     background:  #efe9dc;
 

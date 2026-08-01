@@ -62,7 +62,7 @@ const currentDatabase = computed(() =>
 
         <span class="skills-console-info">
             <span>
-                [{{ String(currentUnits + 1).padStart(5, '0') }}]
+                [{{ String(currentUnits).padStart(5, '0') }}]
             </span>
             ЕДИНИЦ ДАННЫХ
         </span>

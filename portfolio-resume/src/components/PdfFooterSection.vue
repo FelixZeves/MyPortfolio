@@ -34,9 +34,9 @@ defineProps<{
 
                     <span>разработчик</span>
                     
-                    <span>операционных</span>
+                    <span>программного</span>
 
-                    <span>систем</span>
+                    <span>обеспечения</span>
 
                 </div>
 
