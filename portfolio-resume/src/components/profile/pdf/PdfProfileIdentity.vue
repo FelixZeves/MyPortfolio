@@ -272,7 +272,7 @@ const employmentFormat = computed(
     border:1px solid rgba(0,0,0,.15);
 
     transform:
-        rotate(2.2deg)
+        rotate(1.5deg)
         translateY(-2px);
 
 }
@@ -300,6 +300,8 @@ const employmentFormat = computed(
 
 .photo-img img {
 
+    pointer-events: none;
+
     width:100%;
 
     height:100%;
@@ -310,7 +312,7 @@ const employmentFormat = computed(
 
     transform:
         scaleX(-1)
-        rotate(.4deg);
+        rotate(1deg);
 
     filter:
         grayscale(.45)
