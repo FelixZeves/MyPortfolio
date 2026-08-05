@@ -4,14 +4,20 @@ import { nextTick } from "vue";
 
 export function useProjectsFlip(){
 
+    function getActiveSlide(container: HTMLElement){
+
+        return container.querySelector(
+            '.q-carousel__slide'
+        ) as HTMLElement
+    
+    }
+
     async function animateExpand(
         container: HTMLElement,
         update:() => void
     ){
     
-        let slide = container.querySelector(
-            '.projects-slide'
-        )!
+        let slide = getActiveSlide(container)
     
         const navigator = container.querySelector(
             '.projects-navigator'
@@ -50,11 +56,7 @@ export function useProjectsFlip(){
     
         await nextTick()
     
-    
-        slide = container.querySelector(
-            '.projects-slide'
-        )!
-    
+        slide = getActiveSlide(container)
     
         const expanded = slide.querySelector(
             '.project-card:not(.hidden)'
@@ -108,9 +110,7 @@ export function useProjectsFlip(){
         update:() => void
     ){
 
-        let slide = container.querySelector(
-            '.projects-slide'
-        )!
+        let slide = getActiveSlide(container)
 
         const navigator = container.querySelector(
             '.projects-navigator'
@@ -131,9 +131,7 @@ export function useProjectsFlip(){
 
         await nextTick()
 
-        slide = container.querySelector(
-            '.projects-slide'
-        )!
+        slide = getActiveSlide(container)
 
         gsap.set(slide,{
             opacity:0

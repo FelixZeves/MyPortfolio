@@ -7,7 +7,7 @@ import type { Project } from '@/types/project.ts';
 
 import SignalOverlay from '../ui/SignalOverlay.vue';
 import ProjectCard from './ProjectCard.vue';
-import { useProjectsFlip } from '@/composables/useProjectsFlip.ts';
+import { useProjectsFlip } from '@/composables/useProjectsFlip';
 
 
 const props = defineProps<{
