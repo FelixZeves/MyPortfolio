@@ -20,6 +20,10 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: portfolio-resume
+
     steps:
 
       - name: Checkout repository
@@ -45,6 +49,10 @@ jobs:
     needs: build
 
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: portfolio-resume
 
     steps:
 
@@ -96,13 +104,13 @@ jobs:
 
       - name: Copy PDF to deployment
         run: |
-          cp portfolio.pdf dist/portfolio.pdf
+          cp portfolio.pdf  portfolio-resume/dist/portfolio.pdf
 
       - name: Upload deployment artifact
         uses: actions/upload-artifact@v4
         with:
           name: site
-          path: dist
+          path:  portfolio-resume/dist
 
       - name: Stop servers
         if: always()
@@ -120,6 +128,10 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: portfolio-resume
+
     permissions:
       pages: write
       id-token: write
@@ -134,7 +146,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: site
-          path: dist
+          path:  portfolio-resume/dist
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
@@ -142,7 +154,7 @@ jobs:
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path:  portfolio-resume/dist
 
       - name: Deploy to GitHub Pages
         id: deployment
