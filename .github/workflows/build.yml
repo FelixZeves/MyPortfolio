@@ -102,7 +102,9 @@ jobs:
 
       - name: Validate PDF
         run: |
-          file portfolio.pdf | grep PDF
+          file portfolio.pdf
+          ls -lh portfolio.pdf
+          head -c 200 portfolio.pdf
 
       - name: Copy PDF to deployment
         run: |
@@ -119,6 +121,12 @@ jobs:
         run: |
           kill $(cat vite.pid) || true
           kill $(cat server.pid) || true
+      
+      - name: Debug logs
+        if: failure()
+        run: |
+          cat server.log
+          cat vite.log
 
   deploy:
 
