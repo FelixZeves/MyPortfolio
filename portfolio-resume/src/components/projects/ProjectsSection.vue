@@ -243,7 +243,7 @@ const hasNavigation = computed(() =>
 
 .project-card.hidden{
 
-    opacity:0;
+    display:none;
 
     pointer-events:none;
 
