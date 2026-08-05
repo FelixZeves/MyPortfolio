@@ -9,6 +9,7 @@ import type { Profile } from '@/types/profile.ts';
 
 import Logo from '../ui/Logo.vue';
 import { getEmploymentFormatName, getEmploymentTypeName } from '@/utils/employment.ts';
+import { downloadPdf } from '@/utils/downloadPdf.ts';
 
 
 const props = defineProps<{
@@ -49,7 +50,7 @@ const employmentFormat = computed(
     () => getEmploymentFormatName(props.profile.employment.format)
 )
 
-async function downloadPdf() {
+async function notifyPdf() {
 
     const notify = $q.notify({
         spinner: true,
@@ -60,57 +61,27 @@ async function downloadPdf() {
         message: "Подготовка документа..."
     })
 
-    try {
 
-        setTimeout(() => {
-            notify({
-                message: "Формирование страниц..."
-            })
-        }, 700)
-
-        setTimeout(() => {
-            notify({
-                message: "Оптимизация PDF..."
-            })
-        }, 800)
-
-        const response = await fetch("/api/pdf", {
-            method: "POST"
-        })
-
-        if (!response.ok) {
-            throw new Error("Ошибка генерации PDF")
-        }
-
-        const blob = await response.blob()
-
-        const url = URL.createObjectURL(blob)
-
-        const a = document.createElement("a")
-
-        a.href = url
-        a.download = "portfolio.pdf"
-        a.click()
-
-        URL.revokeObjectURL(url)
-
+    setTimeout(() => {
         notify({
-            spinner: false,
-            icon: "done_all",
-            timeout: 2500,
-            message: "экспорт выполнен"
+            message: "Формирование страниц..."
         })
+    }, 700)
 
-    } catch {
-
+    setTimeout(() => {
         notify({
-            spinner: false,
-            icon: "code_off",
-            timeout: 4000,
-            message: "ошибка сервера"
+            message: "Оптимизация PDF..."
         })
+    }, 800)
 
-    }
+    await downloadPdf()
+
+    notify({
+        spinner: false,
+        icon: "done_all",
+        timeout: 2500,
+        message: "экспорт выполнен"
+    })
 
 }
 
@@ -221,7 +192,7 @@ async function downloadPdf() {
             flat
             class="pdf-btn"
             icon="picture_as_pdf"
-            @click="downloadPdf"
+            @click="notifyPdf"
         >
             СКАЧАТЬ PDF
         </q-btn>

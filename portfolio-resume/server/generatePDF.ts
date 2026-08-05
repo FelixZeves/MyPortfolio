@@ -1,27 +1,36 @@
-import puppeteer from "puppeteer"
+import puppeteer, { Browser } from "puppeteer"
+import { config } from "./config"
 
 export async function generatePdf() {
 
-    const browser = await puppeteer.launch({
-        headless: true,
-    })
+    let browser: Browser | undefined
 
-    const page = await browser.newPage()
+    try  {
 
-    await page.goto(
-        "http://localhost:5173/pdf",
-        {
-            waitUntil: "networkidle0"
-        }
-    )
+        browser = await puppeteer.launch({
+            headless: true,
+        })
+    
+        const page = await browser.newPage()
+    
+        await page.goto(
+            config.pdfUrl,
+            {
+                waitUntil: "networkidle0"
+            }
+        )
+    
+        return await page.pdf({
+            format: "A4",
+            printBackground: true,
+            preferCSSPageSize:true
+        })
 
-    const pdf = await page.pdf({
-        format: "A4",
-        printBackground: true,
-        preferCSSPageSize:true
-    })
+    }
+    
 
-    await browser.close()
-
-    return pdf
+    finally{
+        await browser?.close();
+    }
+    
 }

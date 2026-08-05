@@ -34,8 +34,8 @@ const props = defineProps<{
 
             <SignalPoint
                 :position="{
-                    top: '11%',
-                    left: '5%'
+                    top: '10.8%',
+                    left: '4.9%'
                 }"
                 :pulse="true"
                 :size="'6px'"

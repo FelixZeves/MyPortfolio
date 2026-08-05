@@ -1,26 +1,35 @@
 <script setup lang="ts">
+import { computed } from 'vue';
+import type { CSSProperties } from 'vue';
 
+import { resolveUIPosition } from '@/utils/useUIPosition';
 import type { UIPosition } from '@/types/uiPosition';
 
-withDefaults(
-defineProps<{
-    position?: UIPosition
-    direction?:'horizontal'|'vertical'
-    length?:string
-    thickness?:string
-    color?:string
-    flow?:boolean
-    flowOffset?:string
-}>(),
-{
-    direction:'horizontal',
-    length:'100px',
-    thickness:'1px',
-    color:'var(--signal-primary)',
-    flow:false,
-    flowOffset: '20px'
-}
-)
+const props = withDefaults(
+    defineProps<{
+        position?: UIPosition
+        direction?:'horizontal'|'vertical'
+        length?:string
+        thickness?:string
+        color?:string
+        flow?:boolean
+        flowOffset?:string
+    }>(),
+    {
+        direction:'horizontal',
+        length:'100px',
+        thickness:'1px',
+        color:'var(--signal-primary)',
+        flow:false,
+        flowOffset: '20px'
+    }
+    )
+
+const positionStyle = computed<CSSProperties>(() => {
+
+    return resolveUIPosition(props.position)
+    
+})
 
 </script>
 
@@ -33,7 +42,7 @@ defineProps<{
         direction,
         {flow}
     ]"
-    :style="position"
+    :style="positionStyle"
 />
 
 </template>

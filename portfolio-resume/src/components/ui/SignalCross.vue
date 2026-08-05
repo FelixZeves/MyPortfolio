@@ -1,29 +1,40 @@
 <script setup lang="ts">
+import { computed } from 'vue';
+import type { CSSProperties } from 'vue';
 
 import type { UIPosition } from '@/types/uiPosition.ts'
+import { resolveUIPosition } from '@/utils/useUIPosition';
 
-withDefaults(
-defineProps<{
 
-    position?: UIPosition
-    size?: string
-    thickness?: string
-    color?: string
+const props = withDefaults(
+    defineProps<{
 
-}>(),
-{
-    size:'16px',
-    thickness:'1px',
-    color:'var(--signal-primary)'
+        position?: UIPosition
+        size?: string
+        thickness?: string
+        color?: string
+
+    }>(),
+    {
+        size:'16px',
+        thickness:'1px',
+        color:'var(--signal-primary)'
+    }
+)
+
+
+const positionStyle = computed<CSSProperties>(() => {
+
+    return resolveUIPosition(props.position)
+
 })
 
 </script>
-
 <template>
 
     <div
         class="signal-cross"
-        :style="position"
+        :style="positionStyle"
     >
 
         <div class="horizontal"/>

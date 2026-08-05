@@ -1,8 +1,11 @@
 <script setup lang="ts">
+import { computed } from 'vue';
+import type { CSSProperties } from 'vue';
 
+import { resolveUIPosition } from '@/utils/useUIPosition';
 import type { UIPosition } from '@/types/uiPosition';
 
-withDefaults(
+const props = withDefaults(
     defineProps<{
         position?: UIPosition
         size?: string
@@ -16,6 +19,12 @@ withDefaults(
     }
 )
 
+const positionStyle = computed<CSSProperties>(() => {
+
+    return resolveUIPosition(props.position)
+
+})
+
 </script>
 
 
@@ -24,7 +33,7 @@ withDefaults(
     <div
         class="signal-point"
         :class="{ pulse }"
-        :style="position"
+        :style="positionStyle"
     />
 
 </template>

@@ -59,6 +59,8 @@ async function onProfileChange(
     
     if (profile === 'personal') {
 
+        if (!scanner.value || !fracture.value) return
+
         await repairProfile(
             scanner.value,
             fracture.value,
