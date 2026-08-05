@@ -61,16 +61,15 @@ app.post("/api/pdf", async (_, reply) => {
             )
             .send(pdf)
     }
-    catch(err) {
-
-        app.log.error(err)
-
-        return reply
-            .code(500)
-            .send({
-                error: "PDF generation failed"
-            })
-
+    catch(error){
+        console.error(error)
+    
+        reply.status(500).send({
+            error: "PDF generation failed",
+            message: error instanceof Error
+                ? error.message
+                : String(error)
+        })
     }
 
 })
