@@ -6,11 +6,9 @@
   "scripts": {
     "dev": "vite",
     "dev:pdf": "concurrently \"vite\" \"tsx server/index.ts\"",
-    
     "type-check": "vue-tsc --build",
     "build": "vite build",
     "preview": "vite preview",
-    
     "ci": "run-s type-check build",
     "pdf-server": "cross-env NODE_ENV=production tsx server/index.ts",
     "ci:pdf": "npm run build && concurrently \"vite preview --host 127.0.0.1\" \"cross-env NODE_ENV=production tsx server/index.ts\""
@@ -33,7 +31,6 @@
   },
   "devDependencies": {
     "@quasar/vite-plugin": "^1.12.0",
-    "@rolldown/binding-win32-x64-msvc": "^1.1.5",
     "@tsconfig/node24": "^24.0.4",
     "@types/node": "^24.13.2",
     "@vitejs/plugin-vue": "^6.0.7",
