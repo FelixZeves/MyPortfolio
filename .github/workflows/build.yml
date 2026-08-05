@@ -34,6 +34,7 @@ jobs:
         with:
           node-version: 20
           cache: npm
+          cache-dependency-path: portfolio-resume/package-lock.json
 
       - name: Install dependencies
         run: npm ci
@@ -64,6 +65,7 @@ jobs:
         with:
           node-version: 20
           cache: npm
+          cache-dependency-path: portfolio-resume/package-lock.json
 
       - name: Install dependencies
         run: npm ci
@@ -104,13 +106,13 @@ jobs:
 
       - name: Copy PDF to deployment
         run: |
-          cp portfolio.pdf  portfolio-resume/dist/portfolio.pdf
+          cp portfolio.pdf dist/portfolio.pdf
 
       - name: Upload deployment artifact
         uses: actions/upload-artifact@v4
         with:
           name: site
-          path:  portfolio-resume/dist
+          path: dist
 
       - name: Stop servers
         if: always()
@@ -128,10 +130,6 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: portfolio-resume
-
     permissions:
       pages: write
       id-token: write
@@ -146,7 +144,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: site
-          path:  portfolio-resume/dist
+          path: dist
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
@@ -154,7 +152,7 @@ jobs:
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path:  portfolio-resume/dist
+          path: dist
 
       - name: Deploy to GitHub Pages
         id: deployment
